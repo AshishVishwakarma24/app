@@ -1,0 +1,55 @@
+# To-Do List App with Login/Logout Feature
+
+## Project Overview
+This is a full-stack To-Do List web application that allows users to securely log in and manage their daily tasks. 
+It demonstrates authentication, CRUD operations, and user session handling.
+
+## Core Features
+1. **User Login** - Users can log in with a username and password.
+2. **User Logout** - Users can safely log out of the system.
+3. **Create Task** - Add new to-do tasks.
+4. **View Tasks** - See all your tasks in one place.
+5. **Update Task** - Edit task name or mark tasks as done.
+
+## Purpose
+This project helps understand the basics of full-stack development, including user authentication, backend APIs, 
+database interaction, and frontend integration.
+
+---
+
+## Technologies & Tools We'll Use
+
+| Tool        | Why We're Using It |
+|-------------|---------------------|
+| **Flask**       | Our main Python web framework |
+| **SQLite**      | Simple database stored in a file |
+| **SQLAlchemy**  | ORM to interact with the database using Python |
+| **Flask-WTF**   | Form validation (e.g., login, add task) |
+| **Jinja2**      | To render dynamic HTML templates |
+| **Flask-Login** | (Optional for later) Manage logged-in sessions |
+
+---
+
+## Project Structure
+
+```
+todo_app/
+│── run.py              # Starts the app
+│── app/
+│   │── __init__.py     # App factory, DB setup
+│   │── models.py       # Database models (User, Task)
+│   │── routes/
+│   │   │── __init__.py
+│   │   │── auth.py     # login, logout routes
+│   │   │── tasks.py    # add, update, delete, view tasks
+│   │── templates/
+│   │   │── base.html       # Main layout template
+│   │   │── login.html      # Login page
+│   │   │── register.html   # Registration page
+│   │   │── tasks.html      # Tasks page
+│   │── static/
+│       │── css/
+│       │   │── style.css   # Stylesheet
+│       │── js/
+│           │── script.js   # Frontend script
+```
