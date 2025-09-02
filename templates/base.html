@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- Title block allows child templates to override title -->
+    <title>{% block title %} To-Do App {% endblock %}</title>
+    
+    <!-- Linking external CSS file from Flask static folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>My To-Do App</h1>
+            <nav>
+                <!-- Home link -->
+                <a href="{{ url_for('tasks.view_tasks') }}">Home</a>
+                
+                <!-- Check if user is logged in using Flask session -->
+                {% if 'user' in session %}
+                    <!-- Show Logout if logged in -->
+                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                {% else %}
+                    <!-- Show Login if not logged in -->
+                    <a href="{{ url_for('auth.login') }}">Login</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Section for dynamic content -->
+    <main class="container">
+        <!-- Show flashed messages (like success/error notifications) -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <!-- Content block that child templates will replace -->
+        {% block content %} {% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <!-- Footer with dynamic year -->
+            <p>&copy; {{2025}} My Flask To-Do App</p>
+        </div>
+    </footer>
+
+</body>
+</html>
